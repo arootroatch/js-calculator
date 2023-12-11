@@ -1,0 +1,13 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+#wrapper{
+  height: 400px;
+  width: 300px;
+  background-color: black;
+  padding: 4px;
+}
