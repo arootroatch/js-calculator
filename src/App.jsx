@@ -3,6 +3,7 @@ import data from './buttons.json';
 import { useEffect, useState } from 'react'
 import Button from './components/Button';
 import './stylesheets/App.css'
+import {useSelector} from 'react-redux';
 
 function App() {
 
@@ -10,11 +11,11 @@ function App() {
     return <Button key={data.value} className={data.className} id={data.id} code={data.code} value={data.value}></Button>
   })
 
-  
+  const displayValue = useSelector(state=>state.display)
   
   return (
     <div id="wrapper">
-      <div id='display'></div>
+      <div id='display'>{displayValue}</div>
       <div id='grid-container'>
         {buttons}
       </div>

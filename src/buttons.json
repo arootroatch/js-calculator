@@ -1,103 +1,103 @@
 [
     {
         "value": "AC",
-        "code": "Digit1",
+        "code": "Backspace",
         "className": "",
         "id": "clear"
     },
     {
         "value": "/",
-        "code": "Slash",
+        "code": "/",
         "className": "operator",
         "id": "divide"
     },
     {
         "value": "*",
-        "code": "ShiftLeft+Digit8",
+        "code": "*",
         "className": "operator",
         "id": "multiply"
     },
     {
         "value": 7,
-        "code": "Digit7",
+        "code": "7",
         "className": "number",
         "id": "seven"
     },
     {
         "value": 8,
-        "code": "Digit8",
+        "code": "8",
         "className": "number",
         "id": "eight"
     },
     {
         "value": 9,
-        "code": "Digit9",
+        "code": "9",
         "className": "number",
         "id": "nine"
     },
     {
         "value": "-",
-        "code": "Minus",
+        "code": "-",
         "className": "operator",
         "id": "subtract"
     },
     {
         "value": 4,
-        "code": "Digit4",
+        "code": "4",
         "className": "number",
         "id": "four"
     },
     {
         "value": 5,
-        "code": "Digit5",
+        "code": "5",
         "className": "number",
         "id": "five"
     },
     {
         "value": 6,
-        "code": "Digit6",
+        "code": "6",
         "className": "number",
         "id": "six"
     },
     {
         "value": "+",
-        "code": "ShiftLeft+Equal",
+        "code": "+",
         "className": "operator",
         "id": "add"
     },
     {
         "value": 1,
-        "code": "Digit1",
+        "code": "1",
         "className": "number",
         "id": "one"
     },
     {
         "value": 2,
-        "code": "Digit2",
+        "code": "2",
         "className": "number",
         "id": "two"
     },
     {
         "value": 3,
-        "code": "Digit3",
+        "code": "3",
         "className": "number",
         "id": "three"
     },
     {
         "value": "=",
-        "code": "Equal",
+        "code": "=",
         "className": "operator",
         "id": "equals"
     },
     {
         "value": 0,
-        "code": "Digit0",
+        "code": "0",
         "className": "number",
         "id": "zero"
     },
     {
         "value": ".",
-        "code": "Period",
+        "code": ".",
         "className": "number",
         "id": "decimal"
     }
