@@ -1,0 +1,105 @@
+[
+    {
+        "value": "AC",
+        "code": "Digit1",
+        "className": "",
+        "id": "clear"
+    },
+    {
+        "value": "/",
+        "code": "Slash",
+        "className": "operator",
+        "id": "divide"
+    },
+    {
+        "value": "*",
+        "code": "ShiftLeft+Digit8",
+        "className": "operator",
+        "id": "multiply"
+    },
+    {
+        "value": 7,
+        "code": "Digit7",
+        "className": "number",
+        "id": "seven"
+    },
+    {
+        "value": 8,
+        "code": "Digit8",
+        "className": "number",
+        "id": "eight"
+    },
+    {
+        "value": 9,
+        "code": "Digit9",
+        "className": "number",
+        "id": "nine"
+    },
+    {
+        "value": "-",
+        "code": "Minus",
+        "className": "operator",
+        "id": "subtract"
+    },
+    {
+        "value": 4,
+        "code": "Digit4",
+        "className": "number",
+        "id": "four"
+    },
+    {
+        "value": 5,
+        "code": "Digit5",
+        "className": "number",
+        "id": "five"
+    },
+    {
+        "value": 6,
+        "code": "Digit6",
+        "className": "number",
+        "id": "six"
+    },
+    {
+        "value": "+",
+        "code": "ShiftLeft+Equal",
+        "className": "operator",
+        "id": "add"
+    },
+    {
+        "value": 1,
+        "code": "Digit1",
+        "className": "number",
+        "id": "one"
+    },
+    {
+        "value": 2,
+        "code": "Digit2",
+        "className": "number",
+        "id": "two"
+    },
+    {
+        "value": 3,
+        "code": "Digit3",
+        "className": "number",
+        "id": "three"
+    },
+    {
+        "value": "=",
+        "code": "Equal",
+        "className": "operator",
+        "id": "equals"
+    },
+    {
+        "value": 0,
+        "code": "Digit0",
+        "className": "number",
+        "id": "zero"
+    },
+    {
+        "value": ".",
+        "code": "Period",
+        "className": "number",
+        "id": "decimal"
+    }
+
+]
