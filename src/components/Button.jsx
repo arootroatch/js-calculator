@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { setDisplay } from "../features/counter/displaySlice";
+import { setDisplay } from "../actions";
+
 
 export default function Button(props){
     function onKeydown(e){
@@ -14,10 +15,14 @@ export default function Button(props){
             document.removeEventListener("keydown", onKeydown);
         }
     },)
-   
+    
+    function handleValue(arg){
+        dispatch(setDisplay(arg));
+    }
+    const dispatch = useDispatch();
 
     return(
-        <button className={props.className} id={props.id} onClick={()=>console.log(props.value)}>{props.value}</button>
+        <button className={props.className} id={props.id} onClick={()=>handleValue(props.value)}>{props.value}</button>
     )
 
 }

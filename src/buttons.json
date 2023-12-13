@@ -1,11 +1,5 @@
 [
     {
-        "value": "AC",
-        "code": "Backspace",
-        "className": "",
-        "id": "clear"
-    },
-    {
         "value": "/",
         "code": "/",
         "className": "operator",

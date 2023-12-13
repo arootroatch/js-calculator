@@ -8,15 +8,17 @@ import {useSelector} from 'react-redux';
 function App() {
 
   const buttons = data.map(data =>{
-    return <Button key={data.value} className={data.className} id={data.id} code={data.code} value={data.value}></Button>
+    return <Button key={data.id} className={data.className} id={data.id} code={data.code} value={data.value}></Button>
   })
 
-  const displayValue = useSelector(state=>state.display)
+
+  const displayValue = useSelector((state)=>state.display);
   
   return (
     <div id="wrapper">
       <div id='display'>{displayValue}</div>
       <div id='grid-container'>
+        <button id='clear'>AC</button>
         {buttons}
       </div>
 
