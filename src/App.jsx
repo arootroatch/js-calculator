@@ -13,6 +13,7 @@ function App() {
 
 
   const displayValue = useSelector((state)=>state.display);
+  console.log(displayValue)
   
   return (
     <div id="wrapper">
