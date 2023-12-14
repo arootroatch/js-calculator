@@ -11,11 +11,17 @@ function App() {
   const buttons = data.map(data =>{
     return <Button key={data.id} className={data.className} id={data.id} code={data.code} value={data.value}></Button>
   })
+  const [answer, setAnswer] = useState('');
 
 
   const displayValue = useSelector((state)=>state.display);
   const valueString = useSelector((state)=>state.values);
-  console.log(valueString);
+
+  const equals = () =>{
+    setAnswer(eval(valueString));
+    console.log(answer);
+    dispatch(setDisplay(answer));
+  }
 
   const dispatch = useDispatch();
   const clear = () =>{
@@ -42,7 +48,7 @@ function App() {
       <div id='grid-container'>
         <button id='clear' onClick={()=>clear()}>AC</button>
         {buttons}
-        <button className='operator' id='equals'>=</button>
+        <button className='operator' id='equals' onClick={()=>equals()}>=</button>
       </div>
 
     </div>
