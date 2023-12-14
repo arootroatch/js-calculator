@@ -33,7 +33,7 @@ function App() {
     document.addEventListener('keydown', (e)=>{
       if(e.key === "Backspace" || e.key === "Delete"){
         document.getElementById('clear').click();
-      } else if (e.key === "="){
+      } else if (e.key === "=" || e.key === "Enter"){
         document.getElementById('equals').click();
       }
     })
