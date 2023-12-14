@@ -55,6 +55,8 @@ button:focus-visible {
 #display {
   height: 75px;
   width: 100%;
+  display: grid;
+  grid-template-rows: 40% 60%;
 }
 
 #grid-container{

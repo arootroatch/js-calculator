@@ -11,3 +11,13 @@
   background-color: black;
   padding: 4px;
 }
+
+p{
+  margin: 0;
+  text-align: right;
+  font-size: large;
+}
+
+p:last-of-type{
+  font-size:x-large;
+}
