@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { setDisplay } from "../actions";
+import { setDisplay, setValues } from "../actions";
+
 
 
 export default function Button(props){
@@ -18,7 +19,9 @@ export default function Button(props){
     
     function handleValue(arg){
         dispatch(setDisplay(arg));
+        dispatch(setValues(arg));
     }
+    
     const dispatch = useDispatch();
 
     return(

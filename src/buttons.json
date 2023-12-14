@@ -78,12 +78,6 @@
         "id": "three"
     },
     {
-        "value": "=",
-        "code": "=",
-        "className": "operator",
-        "id": "equals"
-    },
-    {
         "value": 0,
         "code": "0",
         "className": "number",
