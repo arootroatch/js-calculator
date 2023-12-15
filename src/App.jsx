@@ -16,19 +16,19 @@ function App() {
 
   const displayValue = useSelector((state)=>state.display);
   const valueString = useSelector((state)=>state.values);
-
+  const dispatch = useDispatch();
 
   const equals = () =>{
     if (valueString !== ""){
       setAnswer(eval(valueString));
-      console.log(answer);
     }
-    // dispatch(clearValues());
-    dispatch(setDisplay(answer));
-    // dispatch(setValues(answer));
+    dispatch(clearValues());
   }
+  useEffect(()=>{
+    dispatch(setDisplay(answer));
+    dispatch(setValues(answer));
+  }, [answer])
 
-  const dispatch = useDispatch();
   const clear = () =>{
     dispatch(setDisplay(0));
     dispatch(clearValues());
