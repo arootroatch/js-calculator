@@ -1,10 +1,11 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { useDispatch } from "react-redux";
 import { setDisplay, setValues } from "../actions";
 
 
 
 export default function Button(props){
+    console.log("endsOp",endsInOperator.current);
     function onKeydown(e){
         if(e.key === props.code){
             document.getElementById(props.id).click();
@@ -18,10 +19,25 @@ export default function Button(props){
     },)
     
     function handleValue(arg){
-        dispatch(setDisplay(arg));
-        dispatch(setValues(arg));
+        const regex = new RegExp(/[-+*/]/);
+        console.log('operator',regex.test(arg));
+        if (regex.test(arg)){
+           if (endsInOperator.current === false){    
+                endsInOperator.current = true
+                console.log('endsOp',endsInOperator.current);
+                dispatch(setDisplay(arg));
+                dispatch(setValues(arg));
+            }
+        
+        } else {
+            if (endsInOperator.current){
+                endsInOperator.current = false;
+            }
+            dispatch(setDisplay(arg));
+            dispatch(setValues(arg));
+        }
     }
-    
+
     const dispatch = useDispatch();
 
     return(
