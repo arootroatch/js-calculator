@@ -11,16 +11,21 @@ function App() {
   const buttons = data.map(data =>{
     return <Button key={data.id} className={data.className} id={data.id} code={data.code} value={data.value}></Button>
   })
-  const [answer, setAnswer] = useState('');
+  const [answer, setAnswer] = useState("");
 
 
   const displayValue = useSelector((state)=>state.display);
   const valueString = useSelector((state)=>state.values);
 
+
   const equals = () =>{
-    setAnswer(eval(valueString));
-    console.log(answer);
+    if (valueString !== ""){
+      setAnswer(eval(valueString));
+      console.log(answer);
+    }
+    // dispatch(clearValues());
     dispatch(setDisplay(answer));
+    // dispatch(setValues(answer));
   }
 
   const dispatch = useDispatch();
@@ -29,14 +34,17 @@ function App() {
     dispatch(clearValues());
   }
 
+  const onKeyDown = (e) => {
+    if(e.key === "Backspace" || e.key === "Delete"){
+      document.getElementById('clear').click();
+    } else if (e.key === "=" || e.key === "Enter"){
+      document.getElementById('equals').click();
+    }
+  }
+
   useEffect(()=>{
-    document.addEventListener('keydown', (e)=>{
-      if(e.key === "Backspace" || e.key === "Delete"){
-        document.getElementById('clear').click();
-      } else if (e.key === "=" || e.key === "Enter"){
-        document.getElementById('equals').click();
-      }
-    })
+    document.addEventListener('keydown', onKeyDown);
+    return ()=> document.removeEventListener('keydown', onKeyDown);
   })
   
   return (
