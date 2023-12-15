@@ -1,9 +1,9 @@
 
 import data from './buttons.json';
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useSelector } from 'react'
 import Button from './components/Button';
 import './stylesheets/App.css'
-import {useDispatch, useSelector} from 'react-redux';
+import {useDispatch} from 'react-redux';
 import { setDisplay, setValues, clearValues } from './actions';
 import Display from './components/Display';
 
@@ -13,16 +13,22 @@ function App() {
     return <Button key={data.id} className={data.className} id={data.id} code={data.code} value={data.value}></Button>
   })
 
+  const value = useRef("");
   // const valueString = useSelector((state)=>state.values);
+    // (_, b)=>{
+    //   value.current = b;
+    //   return true;
+    // }
+  
   const dispatch = useDispatch();
 
   const equals = () =>{
-    if (valueString !== ""){
-      eval(valueString);
+    if (value !== ""){
+      eval(value.current);
     }
     dispatch(clearValues());
-    dispatch(setDisplay(eval(valueString)));
-    dispatch(setValues(eval(valueString)));
+    dispatch(setDisplay(eval(value.current)));
+    dispatch(setValues(eval(value.current)));
   }
  
 

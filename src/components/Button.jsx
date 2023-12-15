@@ -5,7 +5,7 @@ import { setDisplay, setValues } from "../actions";
 
 
 export default function Button(props){
-    console.log("endsOp",endsInOperator.current);
+    const endsInOperator = useRef(false);
     function onKeydown(e){
         if(e.key === props.code){
             document.getElementById(props.id).click();
