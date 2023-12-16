@@ -30,9 +30,15 @@ export default function Button(props){
                 dispatch(setValues(arg));
             } 
             else {
-                if(valueString.slice(-1) !== arg)
-                dispatch(swapOperator(arg));
-                dispatch(setDisplay(arg));
+                if(valueString.slice(-1) !== arg){
+                    if(arg !== "-"){
+                        dispatch(swapOperator(arg));
+                        dispatch(setDisplay(arg));
+                    } else {
+                        dispatch(setDisplay(arg));
+                        dispatch(setValues(arg));
+                    }
+                }
             }
         } else {
             console.log('number, no endsInOp change')
