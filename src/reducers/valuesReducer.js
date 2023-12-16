@@ -5,7 +5,9 @@ const valuesReducer = (state = initialState, action)=>{
         case 'STORE_VALUE':
             return state.slice(0).concat(action.payload.value);
         case 'CLEAR':
-            return action.payload.value
+            return action.payload.value;
+        case 'SWAP':
+            return state.replace(/[\+=\-/\*]$/, action.payload.value)
         default:
             return state; 
     }

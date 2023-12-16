@@ -1,35 +1,20 @@
 
 import data from './buttons.json';
-import { useEffect, useRef, useSelector } from 'react'
+import { useEffect } from 'react'
 import Button from './components/Button';
+import Display from './components/Display';
+import Equals from './components/Equals';
 import './stylesheets/App.css'
 import {useDispatch} from 'react-redux';
-import { setDisplay, setValues, clearValues } from './actions';
-import Display from './components/Display';
+import { setDisplay, clearValues } from './actions';
 
 function App() {
 
   const buttons = data.map(data =>{
     return <Button key={data.id} className={data.className} id={data.id} code={data.code} value={data.value}></Button>
   })
-
-  const value = useRef("");
-  // const valueString = useSelector((state)=>state.values);
-    // (_, b)=>{
-    //   value.current = b;
-    //   return true;
-    // }
-  
   const dispatch = useDispatch();
 
-  const equals = () =>{
-    if (value !== ""){
-      eval(value.current);
-    }
-    dispatch(clearValues());
-    dispatch(setDisplay(eval(value.current)));
-    dispatch(setValues(eval(value.current)));
-  }
  
 
   const clear = () =>{
@@ -56,7 +41,7 @@ function App() {
       <div id='grid-container'>
         <button id='clear' onClick={()=>clear()}>AC</button>
         {buttons}
-        <button className='operator' id='equals' onClick={()=>equals()}>=</button>
+        <Equals/>
       </div>
 
     </div>

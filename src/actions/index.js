@@ -23,3 +23,12 @@ export const clearValues = () =>{
         }
     }
 }
+
+export const swapOperator = (value) =>{
+    return{
+        type: "SWAP",
+        payload:{
+            value:value
+        }
+    }
+}

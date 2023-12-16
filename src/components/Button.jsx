@@ -1,11 +1,10 @@
-import { useEffect, useRef } from "react";
-import { useDispatch } from "react-redux";
-import { setDisplay, setValues } from "../actions";
+import { useEffect, useRef, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { setDisplay, setValues, swapOperator } from "../actions";
 
 
 
 export default function Button(props){
-    const endsInOperator = useRef(false);
     function onKeydown(e){
         if(e.key === props.code){
             document.getElementById(props.id).click();
@@ -17,22 +16,26 @@ export default function Button(props){
             document.removeEventListener("keydown", onKeydown);
         }
     },)
+
+    const valueString = useSelector((state)=>state.values);
     
     function handleValue(arg){
-        const regex = new RegExp(/[-+*/]/);
-        console.log('operator',regex.test(arg));
-        if (regex.test(arg)){
-           if (endsInOperator.current === false){    
-                endsInOperator.current = true
-                console.log('endsOp',endsInOperator.current);
+        const regex1 = new RegExp(/[-+*/]/); //isOperator
+        const regex2 = new RegExp(/[\+=\-/\*]$/) //ends in Operator
+        console.log("valueString",valueString);
+        console.log('isOperator',regex1.test(arg));
+        if (regex1.test(arg)){
+            if (!regex2.test(valueString)){    
                 dispatch(setDisplay(arg));
                 dispatch(setValues(arg));
+            } 
+            else {
+                if(valueString.slice(-1) !== arg)
+                dispatch(swapOperator(arg));
+                dispatch(setDisplay(arg));
             }
-        
         } else {
-            if (endsInOperator.current){
-                endsInOperator.current = false;
-            }
+            console.log('number, no endsInOp change')
             dispatch(setDisplay(arg));
             dispatch(setValues(arg));
         }
