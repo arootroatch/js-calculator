@@ -16,5 +16,5 @@ const displaySlice = createSlice({
     }
  
 })
-export const {overwrite, concat, swapZero} = displaySlice.actions;
+export const {overwrite, concat} = displaySlice.actions;
 export default displaySlice.reducer;
