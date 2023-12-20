@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { clearValues, concatDisplay, overwriteDisplay, setValues, swapOperator, swapTwoOps, swapZero } from "../actions";
-
+import { clearValues, setValues, swapOperator, swapTwoOps, swapZero } from "../actions";
+import { overwrite, concat } from "../reducers/displayReducer";
 
 
 export default function Button(props){
@@ -31,14 +31,15 @@ export default function Button(props){
         if (isNumber.test(arg)){
             if (valueString.slice(0,1)==='0'){
                 dispatch(swapZero(arg));
+                dispatch(overwrite(arg));
             } else if(endsOperator.test(valueString)){
-                dispatch(overwriteDisplay(arg));
+                dispatch(overwrite(arg));
                 dispatch(setValues(arg));
             } else if(isSolution.test(valueString)){
-                dispatch(overwriteDisplay(arg));
+                dispatch(overwrite(arg));
                 dispatch(clearValues(arg));
             } else{
-                dispatch(concatDisplay(arg));
+                dispatch(concat(arg));
                 dispatch(setValues(arg));
             }
         } else if (isOperator.test(arg)){
@@ -48,7 +49,7 @@ export default function Button(props){
                 } else {
                     dispatch(setValues(arg));
                 }   
-                dispatch(overwriteDisplay(arg));
+                dispatch(overwrite(arg));
             } else if (endsOperator.test(valueString)){
                 if(valueString.slice(-1) !== arg){ 
                     if(arg === '-'){
@@ -59,11 +60,11 @@ export default function Button(props){
                     } else {
                         dispatch(swapOperator(arg));
                     }
-                    dispatch(overwriteDisplay(arg));
+                    dispatch(overwrite(arg));
                 }
             }
         } else if (arg === '.' && !isDecimal.test(displayString)){
-            dispatch(concatDisplay(arg));
+            dispatch(concat(arg));
             dispatch(setValues(arg));
         }
             

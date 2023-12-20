@@ -1,10 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit';
-import displayReducer from "../reducers/displayReducer"
+import displaySlice from "../reducers/displayReducer"
 import valuesReducer from '../reducers/valuesReducer';
 
 export default configureStore({
   reducer: {
-    display: displayReducer,
+    display: displaySlice,
     values: valuesReducer
   }
 })

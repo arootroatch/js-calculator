@@ -1,15 +1,20 @@
+import { createSlice } from "@reduxjs/toolkit";
+
 const initialState = '0';
 
-const displayReducer = (state = initialState, action)=>{
-    switch (action.type){
-        case 'OVERWRITE':
-            return String(action.payload.value);
-        case 'CONCAT':
-            return state.slice(0).concat(action.payload.value);
-        case 'SWAP_ZERO':
-            return state.replace(/^0/, action.payload.value);
-        default:
-            return state; 
+const displaySlice = createSlice({
+    name: 'display',
+    initialState,
+    reducers:{
+        overwrite: (state, action)=>{
+            return state = String(action.payload);
+        },
+        concat: (state, action)=>{
+            return state.concat(action.payload);
+        },
+
     }
-}
-export default displayReducer;
+ 
+})
+export const {overwrite, concat, swapZero} = displaySlice.actions;
+export default displaySlice.reducer;

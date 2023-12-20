@@ -1,20 +1,4 @@
-export const overwriteDisplay = (value) =>{
-    return{
-        type: 'OVERWRITE',
-        payload:{
-            value: value
-        }
-    }
-}
 
-export const concatDisplay = (value)=>{
-    return{
-        type: 'CONCAT',
-        payload:{
-            value:value
-        }
-    }
-}
 
 
 export const setValues = (value) =>{

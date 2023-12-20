@@ -1,13 +1,14 @@
 
 import { useDispatch } from "react-redux";
-import { overwriteDisplay, clearValues } from "../actions";
+import { clearValues } from "../actions";
 import { useEffect } from "react";
+import { overwrite } from "../reducers/displayReducer";
 
 export default function Clear(){
 
     const dispatch = useDispatch();
     const clear = () =>{
-    dispatch(overwriteDisplay("0"));
+    dispatch(overwrite("0"));
     dispatch(clearValues("0"));
     }
 
