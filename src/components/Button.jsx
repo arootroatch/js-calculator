@@ -1,6 +1,6 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setDisplay, setValues, swapOperator } from "../actions";
+import { clearValues, concatDisplay, overwriteDisplay, setValues, swapOperator, swapTwoOps, swapZero } from "../actions";
 
 
 
@@ -18,33 +18,55 @@ export default function Button(props){
     },)
 
     const valueString = useSelector((state)=>state.values);
+    const displayString = useSelector((state)=>state.display);
     
     function handleValue(arg){
-        const regex1 = new RegExp(/[-+*/]/); //isOperator
-        const regex2 = new RegExp(/[\+=\-/\*]$/) //ends in Operator
-        console.log("valueString",valueString);
-        console.log('isOperator',regex1.test(arg));
-        if (regex1.test(arg)){
-            if (!regex2.test(valueString)){    
-                dispatch(setDisplay(arg));
+        const isOperator = new RegExp(/[-+*/]/); 
+        const endsOperator = new RegExp(/[\+=\-/\*]$/);
+        const isNumber = new RegExp(/[0-9]/);
+        const isSolution = new RegExp(/=/);
+        const isDecimal = new RegExp(/\./g);
+
+
+        if (isNumber.test(arg)){
+            if (valueString.slice(0,1)==='0'){
+                dispatch(swapZero(arg));
+            } else if(endsOperator.test(valueString)){
+                dispatch(overwriteDisplay(arg));
                 dispatch(setValues(arg));
-            } 
-            else {
-                if(valueString.slice(-1) !== arg){
-                    if(arg !== "-"){
-                        dispatch(swapOperator(arg));
-                        dispatch(setDisplay(arg));
-                    } else {
-                        dispatch(setDisplay(arg));
+            } else if(isSolution.test(valueString)){
+                dispatch(overwriteDisplay(arg));
+                dispatch(clearValues(arg));
+            } else{
+                dispatch(concatDisplay(arg));
+                dispatch(setValues(arg));
+            }
+        } else if (isOperator.test(arg)){
+            if (!endsOperator.test(valueString)){
+                if(isSolution.test(valueString)){
+                    dispatch(clearValues(`${valueString.slice((valueString.indexOf('=')+1))}${arg}`));
+                } else {
+                    dispatch(setValues(arg));
+                }   
+                dispatch(overwriteDisplay(arg));
+            } else if (endsOperator.test(valueString)){
+                if(valueString.slice(-1) !== arg){ 
+                    if(arg === '-'){
                         dispatch(setValues(arg));
+                    } else
+                    if (isOperator.test(valueString.slice(-2,-1))){
+                        dispatch(swapTwoOps(arg));
+                    } else {
+                        dispatch(swapOperator(arg));
                     }
+                    dispatch(overwriteDisplay(arg));
                 }
             }
-        } else {
-            console.log('number, no endsInOp change')
-            dispatch(setDisplay(arg));
+        } else if (arg === '.' && !isDecimal.test(displayString)){
+            dispatch(concatDisplay(arg));
             dispatch(setValues(arg));
         }
+            
     }
 
     const dispatch = useDispatch();

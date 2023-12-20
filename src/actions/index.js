@@ -1,11 +1,22 @@
-export const setDisplay = (value) =>{
+export const overwriteDisplay = (value) =>{
     return{
-        type: 'GET_VALUE',
+        type: 'OVERWRITE',
         payload:{
             value: value
         }
     }
 }
+
+export const concatDisplay = (value)=>{
+    return{
+        type: 'CONCAT',
+        payload:{
+            value:value
+        }
+    }
+}
+
+
 export const setValues = (value) =>{
     return{
         type: "STORE_VALUE",
@@ -15,20 +26,41 @@ export const setValues = (value) =>{
     }
 }
 
-export const clearValues = () =>{
+export const clearValues = (value) =>{
     return{
         type: "CLEAR",
         payload:{
-            value: ""
+            value: value
         }
     }
 }
 
 export const swapOperator = (value) =>{
     return{
-        type: "SWAP",
+        type: "SWAP_OP",
         payload:{
             value:value
         }
     }
 }
+export const swapZero = (value) =>{
+    return{
+        type: "SWAP_ZERO",
+        payload:{
+            value:value
+        }
+    }
+}
+
+export const swapTwoOps = (value) =>{
+    return{
+        type: "SWAP_TWO_OPS",
+        payload:{
+            value:value
+        }
+    }
+}
+
+
+
+

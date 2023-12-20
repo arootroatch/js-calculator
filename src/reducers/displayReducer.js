@@ -1,9 +1,13 @@
-const initialState = 0;
+const initialState = '0';
 
 const displayReducer = (state = initialState, action)=>{
     switch (action.type){
-        case 'GET_VALUE':
-            return action.payload.value;
+        case 'OVERWRITE':
+            return String(action.payload.value);
+        case 'CONCAT':
+            return state.slice(0).concat(action.payload.value);
+        case 'SWAP_ZERO':
+            return state.replace(/^0/, action.payload.value);
         default:
             return state; 
     }
