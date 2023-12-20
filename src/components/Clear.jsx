@@ -1,15 +1,15 @@
 
 import { useDispatch } from "react-redux";
-import { clearValues } from "../actions";
 import { useEffect } from "react";
 import { overwrite } from "../reducers/displayReducer";
+import { clear } from "../reducers/valuesReducer";
 
 export default function Clear(){
 
     const dispatch = useDispatch();
-    const clear = () =>{
-    dispatch(overwrite("0"));
-    dispatch(clearValues("0"));
+    const clearValue = () =>{
+        dispatch(overwrite("0"));
+        dispatch(clear("0"));
     }
 
     const onKeyDown = (e) => {
@@ -24,6 +24,6 @@ export default function Clear(){
     })
 
     return(
-        <button id='clear' onClick={()=>clear()}>AC</button>
+        <button id='clear' onClick={()=>clearValue()}>AC</button>
     )
 }

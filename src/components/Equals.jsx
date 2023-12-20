@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
-import { setValues } from "../actions";
 import { useRef, useEffect } from "react";
 import { overwrite } from "../reducers/displayReducer";
+import { storeValue } from "../reducers/valuesReducer";
 
 export default function Equals(){
    
@@ -13,7 +13,7 @@ export default function Equals(){
     const equals = () => {
         if(!endsOperator.test(valueString)){
             answer.current = String(eval(valueString));
-            dispatch(setValues(`=${answer.current}`));
+            dispatch(storeValue(`=${answer.current}`));
             dispatch(overwrite(answer.current));
         }
     }

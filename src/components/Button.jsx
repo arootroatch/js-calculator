@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { clearValues, setValues, swapOperator, swapTwoOps, swapZero } from "../actions";
 import { overwrite, concat } from "../reducers/displayReducer";
+import { storeValue, clear, swapOps, swapTwoOps, swapZero, } from "../reducers/valuesReducer";
 
 
 export default function Button(props){
@@ -34,38 +34,38 @@ export default function Button(props){
                 dispatch(overwrite(arg));
             } else if(endsOperator.test(valueString)){
                 dispatch(overwrite(arg));
-                dispatch(setValues(arg));
+                dispatch(storeValue(arg));
             } else if(isSolution.test(valueString)){
                 dispatch(overwrite(arg));
-                dispatch(clearValues(arg));
+                dispatch(clear(arg));
             } else{
                 dispatch(concat(arg));
-                dispatch(setValues(arg));
+                dispatch(storeValue(arg));
             }
         } else if (isOperator.test(arg)){
             if (!endsOperator.test(valueString)){
                 if(isSolution.test(valueString)){
-                    dispatch(clearValues(`${valueString.slice((valueString.indexOf('=')+1))}${arg}`));
+                    dispatch(clear(`${valueString.slice((valueString.indexOf('=')+1))}${arg}`));
                 } else {
-                    dispatch(setValues(arg));
+                    dispatch(storeValue(arg));
                 }   
                 dispatch(overwrite(arg));
             } else if (endsOperator.test(valueString)){
                 if(valueString.slice(-1) !== arg){ 
                     if(arg === '-'){
-                        dispatch(setValues(arg));
+                        dispatch(storeValue(arg));
                     } else
                     if (isOperator.test(valueString.slice(-2,-1))){
                         dispatch(swapTwoOps(arg));
                     } else {
-                        dispatch(swapOperator(arg));
+                        dispatch(swapOps(arg));
                     }
                     dispatch(overwrite(arg));
                 }
             }
         } else if (arg === '.' && !isDecimal.test(displayString)){
             dispatch(concat(arg));
-            dispatch(setValues(arg));
+            dispatch(storeValue(arg));
         }
             
     }
