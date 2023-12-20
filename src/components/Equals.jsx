@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
-import { setValues, overwriteDisplay } from "../actions";
+import { setValues } from "../actions";
 import { useRef, useEffect } from "react";
+import { overwrite } from "../reducers/displayReducer";
 
 export default function Equals(){
    
@@ -13,7 +14,7 @@ export default function Equals(){
         if(!endsOperator.test(valueString)){
             answer.current = String(eval(valueString));
             dispatch(setValues(`=${answer.current}`));
-            dispatch(overwriteDisplay(answer.current));
+            dispatch(overwrite(answer.current));
         }
     }
     const onKeyDown = (e) => {
