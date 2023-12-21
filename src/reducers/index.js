@@ -1,9 +1,12 @@
-import displayReducer from './displayReducer';
-import { combineReducers } from '@reduxjs/toolkit';
-import valuesReducer from './valuesReducer';
+import displaySplice from './displayReducer';
+import { combineSlices } from '@reduxjs/toolkit';
+import valuesSlice from './valuesReducer';
+import keySlice from './keyReducer';
 
-const rootReducer = combineReducers({
-    tasks: displayReducer, valuesReducer
+const rootReducer = combineSlices({
+    values: valuesSlice.reducer,
+    display: displaySplice.reducer,
+    key: keySlice.reducer
 })
 
 export default rootReducer;
