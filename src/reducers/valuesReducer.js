@@ -52,5 +52,5 @@ const valuesSlice = createSlice({
         },
     }
 })
-export const {decimalValues ,numberValues, operatorValues, storeValue, clear, swapOps, swapTwoOps, swapZero, solution } = valuesSlice.actions;
+export const {decimalValues ,numberValues, operatorValues, storeValue, clear } = valuesSlice.actions;
 export default valuesSlice.reducer;
