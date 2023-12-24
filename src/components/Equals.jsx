@@ -1,19 +1,19 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useRef, useEffect } from "react";
 import { equalsDisplay } from "../reducers/displayReducer";
-import { storeValue } from "../reducers/valuesReducer";
+import { equalsValue } from "../reducers/valuesReducer";
 
 export default function Equals(){
    
     const dispatch = useDispatch();
-    const valueString = useSelector((state)=>state.values);
+    const valueString = useSelector((state)=>state.values.value);
     const answer = useRef('');
     const endsOperator = new RegExp(/[\+=\-/\*]$/);
 
     const equals = () => {
         if(!endsOperator.test(valueString)){
             answer.current = String(eval(valueString));
-            dispatch(storeValue(`=${answer.current}`));
+            dispatch(equalsValue(`=${answer.current}`));
             dispatch(equalsDisplay(answer.current));
         }
     }
